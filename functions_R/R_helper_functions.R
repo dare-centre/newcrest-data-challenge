@@ -29,15 +29,15 @@ assess_model_prediction <- function(predictor) {
   # Plot the model performance for training, validation and test data.
   # Return the metrics for model performance.
   # Input:
-  #    - predictor: A dataframe with:
-  #        - train_y: observed values for training data
-  #        - train_y_pred: predicted values for training data
-  #        - val_y: observed values for validation data
-  #        - val_y_pred: predicted values for validation data
-  #        - test_y: observed values for test data
-  #        - test_y_pred: predicted values for test data
+  #    - predictor: A dataframe with,
+  #        - train_y       observed values for training data
+  #        - train_y_pred  predicted values for training data
+  #        - val_y         observed values for validation data
+  #        - val_y_pred    predicted values for validation data
+  #        - test_y        observed values for test data
+  #        - test_y_pred   predicted values for test data
   # Output:
-  #    - metrics: A dataframe with:
+  #    - metrics: A dataframe with,
   #        - R2
   #        - RMSE
   #        - MAE
@@ -96,18 +96,48 @@ assess_model_prediction <- function(predictor) {
 ###############################################################################
 ###############################################################################
 
-inversescaler_pred_dict <- function(predicted_data, scaler = None) {
+inversescaler_predictor <- function(predictor) {
 
-  # Construct a dictionary with the model predictions and inverse transform if needed.
+  # Inverse scale selected predictor dataframe columns.
 
-  if not scaler is None:
-    predicted_data["train_y"] <- scaler.inverse_transform(predicted_data["train_y"])
-  predicted_data["train_y_pred"] <- scaler.inverse_transform(predicted_data["train_y_pred"].reshape(-1,1))
-  predicted_data["test_y"] <- scaler.inverse_transform(predicted_data["test_y"])
-  predicted_data["test_y_pred"] <- scaler.inverse_transform(predicted_data["test_y_pred"].reshape(-1,1))
-  if not predicted_data["val_y"] is None:
-    predicted_data["val_y"] <- scaler_y.inverse_transform(predicted_data["val_y"])
-  predicted_data["val_y_pred"] <- scaler_y.inverse_transform(predicted_data["val_y_pred"].reshape(-1,1))
+  predictor$train_y <- predictor$train_y *
+    attr(predictor$train_y, "scaled:scale") +
+    attr(predictor$train_y, "scaled:center")
+  attr(predictor$train_y, "scaled:scale") <- NULL
+  attr(predictor$train_y, "scaled:center") <- NULL
 
-  return(predicted_data)
+  predictor$train_y_pred <- predictor$train_y_pred *
+    attr(predictor$train_y_pred, "scaled:scale") +
+    attr(predictor$train_y_pred, "scaled:center")
+  attr(predictor$train_y_pred, "scaled:scale") <- NULL
+  attr(predictor$train_y_pred, "scaled:center") <- NULL
+
+  predictor$test_y <- predictor$test_y *
+    attr(predictor$test_y, "scaled:scale") +
+    attr(predictor$test_y, "scaled:center")
+  attr(predictor$test_y, "scaled:scale") <- NULL
+  attr(predictor$test_y, "scaled:center") <- NULL
+
+  predictor$test_y_pred <- predictor$test_y_pred *
+    attr(predictor$test_y_pred, "scaled:scale") +
+    attr(predictor$test_y_pred, "scaled:center")
+  attr(predictor$test_y_pred, "scaled:scale") <- NULL
+  attr(predictor$test_y_pred, "scaled:center") <- NULL
+
+  if ("val_y" %in% colnames(predictor)) {
+
+    predictor$val_y <- predictor$test_y_pred *
+      attr(predictor$val_y, "scaled:scale") +
+      attr(predictor$val_y, "scaled:center")
+    attr(predictor$val_y, "scaled:scale") <- NULL
+    attr(predictor$val_y, "scaled:center") <- NULL
+
+    predictor$val_y_pred <- predictor$test_y_pred *
+      attr(predictor$val_y_pred, "scaled:scale") +
+      attr(predictor$val_y_pred, "scaled:center")
+    attr(predictor$val_y_pred, "scaled:scale") <- NULL
+    attr(predictor$val_y_pred, "scaled:center") <- NULL
+  }
+
+  return(predictor)
 }
