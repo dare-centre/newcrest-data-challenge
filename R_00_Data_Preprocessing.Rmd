@@ -1,0 +1,41 @@
+
+```{r setup, include=FALSE}
+
+library(knitr)          # To set chunk options.
+
+# Global knitr options.
+opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+---
+output: html_document
+---
+\
+
+# DARE-Newcrest data challenge - flotation plant dataset
+DARE 2022
+
+In this R Markdown file, we will provide a template for the DARE-Newcrest data challenge. The main steps covered here will be:
+
+- Load the data
+- Provide an overview of what is in the data
+- Provide an example of a terribly performing baseline model
+- Provide functions to quantify model predictive performance
+
+## Imports and settings
+Everything we need to get started.
+
+```{r chunk_one}
+
+
+
+```
+
+
+```{r chunk_two}
+
+```
+
+```{r chunk_three}
+
+```
