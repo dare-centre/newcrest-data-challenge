@@ -11,7 +11,7 @@ load_raw_data <- function() {
   # N.B. Assumes a header row is present.
   raw_data <- readr::read_csv(
     file = Gmisc::pathJoin(
-      "data", "raw_data",
+      funr::get_script_path(), "data", "raw_data",
       "MiningProcess_Flotation_Plant_Database.csv"
     ),
     locale = readr::locale(decimal_mark = ","),
@@ -30,23 +30,23 @@ load_hourly_data <- function() {
 
   train_data <- readr::read_csv(
     file = Gmisc::pathJoin(
-      'data',
-      'hourly_train_data.csv'
+      funr::get_script_path(), "data",
+      "hourly_train_data.csv"
     ),
     show_col_types = FALSE
   )
   test_data <- readr::read_csv(
     file = Gmisc::pathJoin(
-      'data',
-      'hourly_test_data.csv'
+      funr::get_script_path(), "data",
+      "hourly_test_data.csv"
     ),
     show_col_types = FALSE
   )
 
-  train_x <- train_data[, !(names(train_data) %in% '% Silica Concentrate')]
-  train_y <- train_data[, '% Silica Concentrate']
-  test_x <- test_data[, !(names(test_data) %in% '% Silica Concentrate')]
-  test_y <- test_data[, '% Silica Concentrate']
+  train_x <- train_data[, !(names(train_data) %in% "% Silica Concentrate")]
+  train_y <- train_data[, "% Silica Concentrate"]
+  test_x <- test_data[, !(names(test_data) %in% "% Silica Concentrate")]
+  test_y <- test_data[, "% Silica Concentrate"]
 
   return(list("train_x" = train_x, "train_y" = train_y,
               "test_x" = test_x, "test_y" = test_y))
