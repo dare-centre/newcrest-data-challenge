@@ -226,10 +226,9 @@ data_list <- list(
   "val_y" = val_y,
   "val_y_pred" = val_y_pred
 )
-#predicted_data  = inversescaler_pred_dict(data_list, scaler = scaler_y)
+predicted_data <- inversescaler_predictor(data_list)
 
-#data_list["train_y_pred"]
-#data_list["train_y_pred"].reshape(-1, 1)
+head(data_list$train_y_pred)
 
 ```
 

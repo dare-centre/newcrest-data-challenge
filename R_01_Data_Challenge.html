@@ -1656,8 +1656,8 @@ test_y &lt;- all_data$test_y
 rm(all_data)
 gc()</code></pre>
 <pre><code>##           used  (Mb) gc trigger  (Mb) max used  (Mb)
-## Ncells 2390345 127.7    4570308 244.1  4570308 244.1
-## Vcells 4045115  30.9    8388608  64.0  6837447  52.2</code></pre>
+## Ncells 2390344 127.7    4570258 244.1  4570258 244.1
+## Vcells 4045096  30.9    8388608  64.0  6837431  52.2</code></pre>
 <pre class="r"><code>head(train_val_x)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -1824,10 +1824,23 @@ data_list &lt;- list(
   &quot;val_y&quot; = val_y,
   &quot;val_y_pred&quot; = val_y_pred
 )
-#predicted_data  = inversescaler_pred_dict(data_list, scaler = scaler_y)
+predicted_data &lt;- inversescaler_predictor(data_list)
 
-#data_list[&quot;train_y_pred&quot;]
-#data_list[&quot;train_y_pred&quot;].reshape(-1, 1)</code></pre>
+head(data_list$train_y_pred)</code></pre>
+<pre><code>##   % Iron Concentrate Flotation Column 01 Air Flow Flotation Column 03 Air Flow
+## 1          0.6870622                    0.2322903                    0.2304393
+## 2          0.6367300                    0.2152734                    0.2135580
+## 3          0.7086331                    0.2395833                    0.2376742
+## 4          0.7517751                    0.2541692                    0.2521439
+## 5         -2.2897298                   -0.7741396                   -0.7679710
+## 6          0.4857333                    0.1642226                    0.1629140
+##   Flotation Column 02 Air Flow Flotation Column 05 Level
+## 1                    0.1966466                 0.1903189
+## 2                    0.1822408                 0.1763767
+## 3                    0.2028205                 0.1962942
+## 4                    0.2151683                 0.2082447
+## 5                   -0.6553520                -0.6342642
+## 6                    0.1390235                 0.1345500</code></pre>
 <pre class="r"><code>## plot the model performance and get metrics
 #metrics &lt;- assess_model_prediction(predicted_data)
 cat(&quot;Model performance metrics:&quot;)</code></pre>
