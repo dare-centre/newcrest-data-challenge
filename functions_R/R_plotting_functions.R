@@ -1,4 +1,6 @@
 
+library(ggplot2)
+
 ###############################################################################
 ###############################################################################
 
@@ -9,33 +11,13 @@ plot_model_fit <- function(x, y_obs, y_mod, mod_metrics = NULL, title = "") {
   #pdf(file_name)
 
   # Generate model fit plot.
-  ggplot2::ggplot(data.frame("y_obs" = y_obs, "y_mod" = y_mod),
+  ggplot(data.frame("y_obs" = y_obs, "y_mod" = y_mod),
                   aes(x = y_obs, y = y_mod)) +
     geom_point(shape = 16) +   # medium size, filled round point.
-
     geom_abline(slope = 1) +
     xlab("Observed") +
     ylab("Modelled") +
-    ggplot2::theme(axis.line = ggplot2::element_line(size = 0.4),
-                   axis.text = ggplot2::element_text(colour = "black"),
-                   axis.ticks = ggplot2::element_line(colour = "black"),
-                   legend.position = "none",
-                   panel.background = ggplot2::element_rect(fill = "white"),
-                   panel.border = ggplot2::element_rect(
-                     colour = "black",
-                     fill = "transparent"
-                   ),
-                   panel.grid.major = ggplot2::element_line(
-                     size = 0.25,
-                     linetype = "dashed",
-                     colour = "grey"
-                   ),
-                   panel.grid.minor = ggplot2::element_line(
-                     size = 0.25,
-                     linetype = "dashed",
-                     colour = "grey"
-                   ),
-                   text = ggplot2::element_text(family = "CM Roman", size = 10))
+    theme_dare()
 
   #gridExtra::grid.arrange(grobs = plot_fix_panels(ggplot_HAPO))
   #plot_finalise(file_name)
@@ -91,3 +73,33 @@ plot_model_fit <- function(x, y_obs, y_mod, mod_metrics = NULL, title = "") {
 ###############################################################################
 ###############################################################################
 
+theme_dare <- function() {
+
+  # Ensure required fonts are available.
+  #stopifnot(validate_ghostscript_paths())
+  extrafont::loadfonts(quiet = TRUE)
+
+  theme(axis.line = element_line(size = 0.4),
+        axis.text = element_text(colour = "black"),
+        axis.ticks = element_line(colour = "black"),
+        legend.position = "none",
+        panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(
+           colour = "black",
+           fill = "transparent"
+        ),
+        panel.grid.major = element_line(
+           size = 0.25,
+           linetype = "dashed",
+           colour = "grey"
+        ),
+        panel.grid.minor = element_line(
+           size = 0.25,
+           linetype = "dashed",
+           colour = "grey"
+        ),
+        text = element_text(family = "CM Roman", size = 10))
+}
+
+###############################################################################
+###############################################################################

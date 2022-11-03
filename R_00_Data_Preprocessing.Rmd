@@ -9,10 +9,14 @@ output:
 
 ```{r setup, include=FALSE}
 
+library(dplyr)          # For data manipulation.
+library(ggplot2)        # For plots.
 library(knitr)          # To set chunk options.
 
 # Global knitr options.
 opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+script_path_current <- funr::get_script_path()
 ```
 
 DARE 2022
@@ -29,9 +33,9 @@ Everything we need to get started.
 
 ```{r chunk_one}
 
-source("functions_R/R_data_functions.R", local = knitr::knit_global())
-source("functions_R/R_helper_functions.R", local = knitr::knit_global())
-source("functions_R/R_plotting_functions.R", local = knitr::knit_global())
+source(Gmisc::pathJoin(script_path_current, "functions_R", "R_data_functions.R"), local = knitr::knit_global())
+source(Gmisc::pathJoin(script_path_current, "functions_R", "R_helper_functions.R"), local = knitr::knit_global())
+source(Gmisc::pathJoin(script_path_current, "functions_R", "R_plotting_functions.R"), local = knitr::knit_global())
 
 ```
 
@@ -47,4 +51,129 @@ head(process_data)
 
 ```{r chunk_three}
 
+# lets look at some properties of the data 
+cat("Number of features: ", ncol(process_data),
+    "\nNumber of observations: ", nrow(process_data),
+    "\nVariable names: ", paste0('"', colnames(process_data), '"  '),
+    sep = "")
+
+Hmisc::html(Hmisc::describe(process_data))
+
 ```
+\
+
+### Dataset description
+Our task is to predict the `% Silica Concentrate` based on the available features.
+
+From <a href="https://www.kaggle.com/datasets/edumagalhaes/quality-prediction-in-a-mining-process?datasetId=6294&sortBy=voteCount">the Kaggle page:</a>
+
+"The first column shows time and date range (from march of 2017 until september of 2017). Some columns were sampled every 20 second. Others were sampled on a hourly basis.
+
+The second and third columns are quality measures of the iron ore pulp right before it is fed into the flotation plant. Column 4 until column 8 are the most important variables that impact in the ore quality in the end of the process. From column 9 until column 22, we can see process data (level and air flow inside the flotation columns, which also impact in ore quality. The last two columns are the final iron ore pulp quality measurement from the lab.
+
+Target is to predict the last column, which is the % of silica in the iron ore concentrate."
+
+We have hourly values for:
+
+- `% Iron Feed`
+- `% Silica Feed`
+- `% Iron Concentrate`
+- `% Silica Concentrate`
+
+Cleaning: I am not sure of the interpolation that might have been done before these data were posted online, I have removed a long run of constant values ('2017-07-31 20:00':'2017-08-03 20:00'), I will use this is as a split between training and test data. I have also just thrown out the data up to late March, as people may want to apply timeseries approaches. There are still a lot of smaller stretches of what looks to be problematic data (I think someone has interpolated across null values).
+
+We want to be sure that we are not
+
+```{r chunk_four}
+
+# First of all lets resample hourly taking the mean of each of the process variables
+hourly_data <- select(
+  process_data %>%
+  mutate(hour = lubridate::floor_date(date, "hour")) %>%
+  group_by(hour) %>%
+  summarise(
+    "date" = mean(date),
+    "% Iron Feed" = mean(`% Iron Feed`),
+    "% Silica Feed" = mean(`% Silica Feed`),
+    "Starch Flow" = mean(`Starch Flow`),
+    "Amina Flow" = mean(`Amina Flow`),
+    "Ore Pulp Flow" = mean(`Ore Pulp Flow`),
+    "Ore Pulp pH" = mean(`Ore Pulp pH`),
+    "Ore Pulp Density" = mean(`Ore Pulp Density`),
+    "Flotation Column 01 Air Flow" = mean(`Flotation Column 01 Air Flow`),
+    "Flotation Column 02 Air Flow" = mean(`Flotation Column 02 Air Flow`),
+    "Flotation Column 03 Air Flow" = mean(`Flotation Column 03 Air Flow`),
+    "Flotation Column 04 Air Flow" = mean(`Flotation Column 04 Air Flow`),
+    "Flotation Column 05 Air Flow" = mean(`Flotation Column 05 Air Flow`),
+    "Flotation Column 06 Air Flow" = mean(`Flotation Column 06 Air Flow`),
+    "Flotation Column 07 Air Flow" = mean(`Flotation Column 07 Air Flow`),
+    "Flotation Column 01 Level" = mean(`Flotation Column 01 Level`),
+    "Flotation Column 02 Level" = mean(`Flotation Column 02 Level`),
+    "Flotation Column 03 Level" = mean(`Flotation Column 03 Level`),
+    "Flotation Column 04 Level" = mean(`Flotation Column 04 Level`),
+    "Flotation Column 05 Level" = mean(`Flotation Column 05 Level`),  
+    "Flotation Column 06 Level" = mean(`Flotation Column 06 Level`),
+    "Flotation Column 07 Level" = mean(`Flotation Column 07 Level`),
+    "% Iron Concentrate" = mean(`% Iron Concentrate`),
+    "% Silica Concentrate" = mean(`% Silica Concentrate`)),
+  -1)
+
+hourly_data$"% Silica Concentrate"[between(hourly_data$date,
+                                           lubridate::ymd_hm("2017-07-31 20:00"),
+                                           lubridate::ymd_hm("2017-08-03 20:00"))] <- NA
+cat("Number of hourly observations: ",
+    nrow(tidyr::drop_na(hourly_data)), " of ", nrow(hourly_data), sep = "")
+
+```
+
+Training data
+
+```{r chunk_five}
+
+train_data <- filter(hourly_data, between(date,
+  lubridate::ymd_hms("2017-03-29 12:00:00"),
+  lubridate::ymd_hms("2017-07-31 19:00:00"))
+)
+cat("Training data is around ",
+    round(nrow(train_data) / nrow(hourly_data) * 100, 2),
+    "% of the total data",
+    "\nTraining - number of hourly observations: ",
+    nrow(tidyr::drop_na(train_data)), " of ", nrow(train_data), sep = "")
+
+ggplot(train_data, aes(x = date, y = `% Silica Concentrate`)) +
+  geom_line(color = "#4c72b0") +
+  xlab("date") +
+  ylab("") +
+  theme_dare()
+
+```
+
+Test data
+
+```{r chunk_six}
+
+# now split the test data - conveniently about 20%
+test_data <- filter(hourly_data, date >= lubridate::ymd_hm("2017-08-03 21:00"))
+cat("Test data is around ",
+    round(nrow(test_data) / nrow(hourly_data) * 100, 2),
+    "% of the total data",
+    "\nTest - number of hourly observations: ",
+    nrow(tidyr::drop_na(test_data)), " of ", nrow(test_data), sep = "")
+
+# quick plot
+ggplot(test_data, aes(x = date, y = `% Silica Concentrate`)) +
+  geom_line(color = "#4c72b0") +
+  xlab("date") +
+  ylab("") +
+  theme_dare()
+
+```
+
+```{r chunk_seven}
+
+# Lets now save the training and test data as hourly mean
+data.table::fwrite(train_data, Gmisc::pathJoin(script_path_current, "data", "hourly_train_data_R.csv"))
+data.table::fwrite(test_data, Gmisc::pathJoin(script_path_current, "data", "hourly_test_data_R.csv"))
+
+```
+\
