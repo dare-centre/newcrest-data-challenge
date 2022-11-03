@@ -7,9 +7,6 @@ library(ggplot2)
 plot_model_fit <- function(x, y_obs, y_mod, mod_metrics = NULL, title = "") {
 
   #######
-  #file_name <- "plot_age.pdf"
-  #pdf(file_name)
-
   # Generate model fit plot.
   ggplot(data.frame("y_obs" = y_obs, "y_mod" = y_mod),
                   aes(x = y_obs, y = y_mod)) +
@@ -18,9 +15,6 @@ plot_model_fit <- function(x, y_obs, y_mod, mod_metrics = NULL, title = "") {
     xlab("Observed") +
     ylab("Modelled") +
     theme_dare()
-
-  #gridExtra::grid.arrange(grobs = plot_fix_panels(ggplot_HAPO))
-  #plot_finalise(file_name)
   ###################
 
 

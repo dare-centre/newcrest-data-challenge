@@ -44,13 +44,19 @@ assess_model_prediction <- function(predictor, test = FALSE) {
   #        - MAE
   #    - plots for train, validation and test performance
 
-  predictor_colnames <- colnames(predictor)
+  predictor_names <- names(predictor)
 
   # Calculate the metrics
-  if ("train_y" %in% predictor_colnames) {
+  if ("train_y" %in% predictor_names) {
     train_metrics <- calculate_model_performance(
       predictor$train_y, predictor$train_y_pred
     )
+    ### DEBUG
+    cat("\npredictor$train_time", head(predictor$train_time), sep = " ")
+    cat("\npredictor$train_y", head(predictor$train_y), sep = " ")
+    cat("\npredictor$train_y_pred", head(predictor$train_y_pred), sep = " ")
+    cat("\n")
+    ### END DEBUG
     plot_model_fit(
       predictor$train_time, predictor$train_y, predictor$train_y_pred,
       mod_metrics = train_metrics,
@@ -59,7 +65,7 @@ assess_model_prediction <- function(predictor, test = FALSE) {
   } else {
     train_metrics <- NULL
   }
-  if ("val_y" %in% predictor_colnames) {
+  if ("val_y" %in% predictor_names) {
     val_metrics <- calculate_model_performance(
       predictor$val_y, predictor$val_y_pred
     )
@@ -71,7 +77,7 @@ assess_model_prediction <- function(predictor, test = FALSE) {
   } else {
     val_metrics <- NULL
   }
-  if ("test_y" %in% predictor_colnames) {
+  if ("test_y" %in% predictor_names) {
     test_metrics <- calculate_model_performance(
       predictor$test_y, predictor$test_y_pred
     )
@@ -84,8 +90,8 @@ assess_model_prediction <- function(predictor, test = FALSE) {
     test_metrics <- NULL
   }
 
-  # construct dataframe
-  metrics <- data.frame(
+  # construct list
+  metrics <- list(
     "train" = train_metrics,
     "val" = val_metrics,
     "test" = test_metrics
