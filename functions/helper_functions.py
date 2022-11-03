@@ -29,7 +29,7 @@ def calculate_model_performance(y_obs, y_mod, **kwargs):
 ###############################################################################
 ###############################################################################
 
-def assess_model_prediction(pred_dict_in, **kwargs):
+def assess_model_prediction(pred_dict_in, test=False, **kwargs):
     '''
     Plot the model performance for training, validation and test data.
     Return the metrics for model performance.
@@ -41,9 +41,10 @@ def assess_model_prediction(pred_dict_in, **kwargs):
             - val_y_pred: predicted values for validation data
             - test_y: observed values for test data
             - test_y_pred: predicted values for test data
+        - test: False - set to True to get test set results
     Output:
         - metrics: A pandas dataframe with:
-            - R2
+            - R2i
             - RMSE
             - MAE
         - plots for train, validation and test performance
@@ -72,7 +73,7 @@ def assess_model_prediction(pred_dict_in, **kwargs):
         )
     else:
         val_metrics = None
-    if not pred_dict['test_y'] is None:
+    if not pred_dict['test_y'] is None and test:
         test_metrics = calculate_model_performance(
             pred_dict['test_y'], pred_dict['test_y_pred']
         )
