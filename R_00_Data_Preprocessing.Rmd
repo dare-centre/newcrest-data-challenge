@@ -1,4 +1,12 @@
 
+---
+# Keep YAML above the first chunk.
+title: "<span style='font-size: 34px'>DARE-Newcrest data challenge - flotation plant dataset</span>"
+output:
+  html_document:
+    df_print: paged
+---
+
 ```{r setup, include=FALSE}
 
 library(knitr)          # To set chunk options.
@@ -7,11 +15,6 @@ library(knitr)          # To set chunk options.
 opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
----
-title: "<span style='font-size: 34px'>DARE-Newcrest data challenge - flotation plant dataset</span>"
-output: html_document
----
-\
 DARE 2022
 
 In this R Markdown file, we will provide a template for the DARE-Newcrest data challenge. The main steps covered here will be:
@@ -38,7 +41,7 @@ Briefly look at the contents and structure of the data.
 ```{r chunk_two}
 
 process_data <- load_raw_data()
-kable(head(process_data))
+head(process_data)
 
 ```
 
