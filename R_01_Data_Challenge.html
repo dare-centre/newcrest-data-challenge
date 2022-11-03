@@ -1656,8 +1656,8 @@ test_y &lt;- all_data$test_y
 rm(all_data)
 gc()</code></pre>
 <pre><code>##           used  (Mb) gc trigger  (Mb) max used  (Mb)
-## Ncells 2390347 127.7    4570227 244.1  4570227 244.1
-## Vcells 4045120  30.9    8388608  64.0  6837434  52.2</code></pre>
+## Ncells 2390345 127.7    4570308 244.1  4570308 244.1
+## Vcells 4045115  30.9    8388608  64.0  6837447  52.2</code></pre>
 <pre class="r"><code>head(train_val_x)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -1787,16 +1787,14 @@ if (use_scaler) {
 <h3>Train a model</h3>
 <p>We will use a simple linear regression model as a baseline. You can
 implement your own model here.</p>
-<pre class="r"><code>#import sklearn.linear_model as lm
-#from sklearn.neural_network import MLPRegressor
-
-## YOUR CODE HERE
+<pre class="r"><code>## YOUR CODE HERE
 
 ## fit a linear model to the data
-#model &lt;- lm.LinearRegression()
-#model.fit(train_x, train_y)
+model &lt;- lm(train_x ~ train_y)
 
 ## fit a neural network to the data
+## Example Python code.
+##from sklearn.neural_network import MLPRegressor
 ## model &lt;- MLPRegressor(
 ##   hidden_layer_sizes = (100, 20), max_iter = 1000,
 ##   activation = &quot;relu&quot;, solver = &quot;adam&quot;,
@@ -1804,32 +1802,32 @@ implement your own model here.</p>
 ## model.fit(train_x, train_y.squeeze())
 
 ## predict on data
-#train_y_pred &lt;- model.predict(train_x)
-#test_y_pred &lt;- model.predict(test_x)
-#if (!is.null(val_x)) {
-#  val_y_pred &lt;- model.predict(val_x)
-#}
+train_y_pred &lt;- predict(model, newdata = as.data.frame(train_x))
+test_y_pred &lt;- predict(model, newdata = as.data.frame(test_x))
+if (!is.null(val_x)) {
+  val_y_pred &lt;- predict(model, newdata = as.data.frame(val_x))
+}
 
 ## END CODE</code></pre>
 </div>
 <div id="assess-model-performance" class="section level3">
 <h3>Assess model performance</h3>
-<pre class="r"><code>## construct the dict of data for plotting and metrics
-#data_dict &lt;- {
-#  &quot;train_time&quot;: train_time,
-#  &quot;train_y&quot;: train_y,
-#  &quot;train_y_pred&quot;: train_y_pred,
-#  &quot;test_time&quot;: test_time,
-#  &quot;test_y&quot;: test_y,
-#  &quot;test_y_pred&quot;: test_y_pred,
-#  &quot;val_time&quot;: val_time,
-#  &quot;val_y&quot;: val_y,
-#  &quot;val_y_pred&quot;: val_y_pred,
-#}
-#predicted_data  = inversescaler_pred_dict(data_dict, scaler = scaler_y)
+<pre class="r"><code># construct a list of data structures for plotting and metrics
+data_list &lt;- list(
+  &quot;train_time&quot; = train_time,
+  &quot;train_y&quot; = train_y,
+  &quot;train_y_pred&quot; = train_y_pred,
+  &quot;test_time&quot; = test_time,
+  &quot;test_y&quot; = test_y,
+  &quot;test_y_pred&quot; = test_y_pred,
+  &quot;val_time&quot; = val_time,
+  &quot;val_y&quot; = val_y,
+  &quot;val_y_pred&quot; = val_y_pred
+)
+#predicted_data  = inversescaler_pred_dict(data_list, scaler = scaler_y)
 
-#data_dict[&quot;train_y_pred&quot;]
-#data_dict[&quot;train_y_pred&quot;].reshape(-1, 1)</code></pre>
+#data_list[&quot;train_y_pred&quot;]
+#data_list[&quot;train_y_pred&quot;].reshape(-1, 1)</code></pre>
 <pre class="r"><code>## plot the model performance and get metrics
 #metrics &lt;- assess_model_prediction(predicted_data)
 cat(&quot;Model performance metrics:&quot;)</code></pre>

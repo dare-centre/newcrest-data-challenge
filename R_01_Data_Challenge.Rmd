@@ -186,16 +186,14 @@ We will use a simple linear regression model as a baseline. You can implement yo
 
 ```{r chunk_seven}
 
-#import sklearn.linear_model as lm
-#from sklearn.neural_network import MLPRegressor
-
 ## YOUR CODE HERE
 
 ## fit a linear model to the data
-#model <- lm.LinearRegression()
-#model.fit(train_x, train_y)
+model <- lm(train_x ~ train_y)
 
 ## fit a neural network to the data
+## Example Python code.
+##from sklearn.neural_network import MLPRegressor
 ## model <- MLPRegressor(
 ##   hidden_layer_sizes = (100, 20), max_iter = 1000,
 ##   activation = "relu", solver = "adam",
@@ -203,11 +201,11 @@ We will use a simple linear regression model as a baseline. You can implement yo
 ## model.fit(train_x, train_y.squeeze())
 
 ## predict on data
-#train_y_pred <- model.predict(train_x)
-#test_y_pred <- model.predict(test_x)
-#if (!is.null(val_x)) {
-#  val_y_pred <- model.predict(val_x)
-#}
+train_y_pred <- predict(model, newdata = as.data.frame(train_x))
+test_y_pred <- predict(model, newdata = as.data.frame(test_x))
+if (!is.null(val_x)) {
+  val_y_pred <- predict(model, newdata = as.data.frame(val_x))
+}
 
 ## END CODE
 ```
@@ -216,22 +214,22 @@ We will use a simple linear regression model as a baseline. You can implement yo
 
 ```{r chunk_eight}
 
-## construct the dict of data for plotting and metrics
-#data_dict <- {
-#  "train_time": train_time,
-#  "train_y": train_y,
-#  "train_y_pred": train_y_pred,
-#  "test_time": test_time,
-#  "test_y": test_y,
-#  "test_y_pred": test_y_pred,
-#  "val_time": val_time,
-#  "val_y": val_y,
-#  "val_y_pred": val_y_pred,
-#}
-#predicted_data  = inversescaler_pred_dict(data_dict, scaler = scaler_y)
+# construct a list of data structures for plotting and metrics
+data_list <- list(
+  "train_time" = train_time,
+  "train_y" = train_y,
+  "train_y_pred" = train_y_pred,
+  "test_time" = test_time,
+  "test_y" = test_y,
+  "test_y_pred" = test_y_pred,
+  "val_time" = val_time,
+  "val_y" = val_y,
+  "val_y_pred" = val_y_pred
+)
+#predicted_data  = inversescaler_pred_dict(data_list, scaler = scaler_y)
 
-#data_dict["train_y_pred"]
-#data_dict["train_y_pred"].reshape(-1, 1)
+#data_list["train_y_pred"]
+#data_list["train_y_pred"].reshape(-1, 1)
 
 ```
 
