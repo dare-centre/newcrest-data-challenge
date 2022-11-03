@@ -1637,7 +1637,8 @@ DARE-Newcrest data challenge. The main steps covered here will be:</p>
 <div id="imports-and-settings" class="section level3">
 <h3>Imports and settings</h3>
 <p>Everything we need to get started.</p>
-<pre class="r"><code>source(Gmisc::pathJoin(script_path_current, &quot;functions_R&quot;, &quot;R_data_functions.R&quot;), local = knitr::knit_global())
+<pre class="r"><code>script_path_current &lt;- funr::get_script_path()
+source(Gmisc::pathJoin(script_path_current, &quot;functions_R&quot;, &quot;R_data_functions.R&quot;), local = knitr::knit_global())
 source(Gmisc::pathJoin(script_path_current, &quot;functions_R&quot;, &quot;R_helper_functions.R&quot;), local = knitr::knit_global())
 source(Gmisc::pathJoin(script_path_current, &quot;functions_R&quot;, &quot;R_plotting_functions.R&quot;), local = knitr::knit_global())</code></pre>
 </div>
@@ -1711,147 +1712,147 @@ iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAARklE
  2017-09-01 11:00:00 
  </pre>
  <style>
-.hmisctable153271 {
+.hmisctable969315 {
 border: none;
 font-size: 85%;
 }
-.hmisctable153271 td {
+.hmisctable969315 td {
 text-align: right;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable153271 th {
+.hmisctable969315 th {
 color: Black;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: bold;
 }
 </style>
- <table class="hmisctable153271">
+ <table class="hmisctable969315">
  <tr><td><font color="MidnightBlue">lowest</font> :</td><td>2017-03-10 01:00:00</td><td>2017-03-10 02:00:00</td><td>2017-03-10 03:00:00</td><td>2017-03-10 04:00:00</td><td>2017-03-10 05:00:00</td></tr>
  <tr><td><font color="MidnightBlue">highest</font>:</td><td>2017-09-09 19:00:00</td><td>2017-09-09 20:00:00</td><td>2017-09-09 21:00:00</td><td>2017-09-09 22:00:00</td><td>2017-09-09 23:00:00</td></tr>
  </table>
  <hr class="thinhr"> <span style="font-weight:bold">% Iron Feed</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAbklEQVQ4je2TgQqAIAwFz/7/o1NsZluJSqSBDzbn2PAQHm4KgW5sUwjNsbiKWlxtslxD7Gf0sR/NN1QP/p6r+omupde5yi+P4oKj7Y9UiezSM+atHyXEGIQcEllF3jOJa4Uacep6+i8WcSZ50ccOPy8MwH6eybMAAAAASUVORK5CYII=" alt="image" /></div> <style>
-.hmisctable175065 {
+.hmisctable854084 {
 border: none;
 font-size: 74%;
 }
-.hmisctable175065 td {
+.hmisctable854084 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable175065 th {
+.hmisctable854084 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable175065">
+ <table class="hmisctable854084">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>278</td><td>0.992</td><td>56.29</td><td>5.849</td><td>48.21</td><td>48.81</td><td>52.67</td><td>56.08</td><td>59.72</td><td>64.03</td><td>64.03</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 42.74 43.37 44.70 44.90 45.38 ,  <font color="MidnightBlue">highest</font>: 63.64 64.03 64.46 64.48 65.78</span> <hr class="thinhr"> <span style="font-weight:bold">% Silica Feed</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAdUlEQVQ4je1TuxLAIAgL/f+PLi+17cEVFybDQACPZBBQBiAdNQBXBuSjBhxfezi+9pAf3bnHUD2fBKM+r82+ygtKviZ9EKWe6vIdvrjwNGrvfeWjTb++5O/7CSwqhO/RgllAoIUnWr7I2vpqRLBpdkzrpS7pBgyzDK26+XEiAAAAAElFTkSuQmCC" alt="image" /></div> <style>
-.hmisctable131380 {
+.hmisctable166089 {
 border: none;
 font-size: 74%;
 }
-.hmisctable131380 td {
+.hmisctable166089 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable131380 th {
+.hmisctable166089 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable131380">
+ <table class="hmisctable166089">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>293</td><td>0.992</td><td>14.65</td><td>7.725</td><td> 6.26</td><td> 6.26</td><td> 8.94</td><td>13.85</td><td>19.60</td><td>25.31</td><td>26.83</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> :  1.31  2.77  3.77  3.85  4.20 ,  <font color="MidnightBlue">highest</font>: 30.14 30.37 30.90 32.23 33.40</span> <hr class="thinhr"> <span style="font-weight:bold">Starch Flow</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAd0lEQVQ4jb3TUQrAMAgD0Lj7H3owGKytbsa45qs/6qMQWGdwR9908EEwhCGFxc9dBVVwFms2uryjjkiFsZPO1Vgl2Kgp9+YXqyZjmpMQBPm1j3VW4cvWgWiLxKJpQ6teqi6rSFyyU81JuTabcjooNeuIzQ+76nsC+PMH0gDP2HwAAAAASUVORK5CYII=" alt="image" /></div> <style>
-.hmisctable781933 {
+.hmisctable151596 {
 border: none;
 font-size: 85%;
 }
-.hmisctable781933 td {
+.hmisctable151596 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable781933 th {
+.hmisctable151596 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable781933">
+ <table class="hmisctable151596">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>409317</td><td>1</td><td>2869</td><td>1374</td><td> 607</td><td>1034</td><td>2076</td><td>3018</td><td>3728</td><td>4296</td><td>4699</td></tr>
  </table>
  <style>
-.hmisctable876702 {
+.hmisctable793622 {
 border: none;
 font-size: 85%;
 }
-.hmisctable876702 td {
+.hmisctable793622 td {
 text-align: right;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable876702 th {
+.hmisctable793622 th {
 color: Black;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: bold;
 }
 </style>
- <table class="hmisctable876702">
+ <table class="hmisctable793622">
  <tr><td><font color="MidnightBlue">lowest</font> :</td><td>2.02596e-03</td><td>6.61397e-03</td><td>7.65623e-03</td><td>8.88006e-03</td><td>1.32302e-02</td></tr>
  <tr><td><font color="MidnightBlue">highest</font>:</td><td>6.29708e+03</td><td>6.29710e+03</td><td>6.29946e+03</td><td>6.29988e+03</td><td>6.30023e+03</td></tr>
  </table>
  <hr class="thinhr"> <span style="font-weight:bold">Amina Flow</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAdklEQVQ4jb3T4QrAIAgEYN37P/RGNUjZyNOrox8RlR+FonsiLYXzFz8yJ3sHVWRJFRnT9YXKwiiuP5CFQcCaqxddsYYMc+WaTQMWk35qYz+iIP9q0TKnTCAs/PNlE0YbLr+9LbAoGdrrOp2lSxXuLUp0Gn72mG7KxgiacUeprQAAAABJRU5ErkJggg==" alt="image" /></div> <style>
-.hmisctable363824 {
+.hmisctable422702 {
 border: none;
 font-size: 74%;
 }
-.hmisctable363824 td {
+.hmisctable422702 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable363824 th {
+.hmisctable422702 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable363824">
+ <table class="hmisctable422702">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>319416</td><td>1</td><td>488.1</td><td>101.6</td><td>307.1</td><td>360.7</td><td>431.8</td><td>504.4</td><td>553.3</td><td>590.5</td><td>609.2</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 241.6690 241.6880 241.6940 241.6990 241.6992 ,  <font color="MidnightBlue">highest</font>: 739.4550 739.4570 739.4890 739.5040 739.5380</span> <hr class="thinhr"> <span style="font-weight:bold">Ore Pulp Flow</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAc0lEQVQ4jbXTSwrAMAgEUJP7H7pCNilG/Mw4hW5Spi+CsqiRK1jRZkb+QZpoJqNSV5826gJGxnK9TIiM5PJZTRm2NWYH30H3sXW1mNUZmtjyCVW916lno6o0zxXWlE1x630u2X8wRNnss4+5j5c+5zUeNX2LGAj/Dy+esAAAAABJRU5ErkJggg==" alt="image" /></div> <style>
-.hmisctable178323 {
+.hmisctable236196 {
 border: none;
 font-size: 74%;
 }
-.hmisctable178323 td {
+.hmisctable236196 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable178323 th {
+.hmisctable236196 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable178323">
+ <table class="hmisctable236196">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>180189</td><td>1</td><td>397.6</td><td>10.58</td><td>378.5</td><td>380.5</td><td>394.3</td><td>399.2</td><td>403.0</td><td>407.7</td><td>413.9</td></tr>
  </table>
@@ -1864,358 +1865,358 @@ iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAe0lE
  </pre>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> :  8.75334  8.75337  8.75337  8.75337  8.75337 ,  <font color="MidnightBlue">highest</font>: 10.80799 10.80803 10.80805 10.80806 10.80810</span> <hr class="thinhr"> <span style="font-weight:bold">Ore Pulp Density</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAh0lEQVQ4jc3TiwrAIAhA0Wv//9GL2itaqCgjYxux0DOZiIDsF5RCvbaLfFdNR4tYllTXCYKwLNN1cyAsy3LximHTsvtLkDKPI+Rr+/s8Tu2Z+9Wb5isTcC0Y3y7vz+Z3retqLo+N/t0qzlpXf2/rw+NyZY652kNx9WEyTJR1azwu1xKG1W9yANTPCbfTQEfTAAAAAElFTkSuQmCC" alt="image" /></div> <style>
-.hmisctable863518 {
+.hmisctable197298 {
 border: none;
 font-size: 74%;
 }
-.hmisctable863518 td {
+.hmisctable197298 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable863518 th {
+.hmisctable197298 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable863518">
+ <table class="hmisctable197298">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>105805</td><td>1</td><td>1.68</td><td>0.07565</td><td>1.522</td><td>1.561</td><td>1.647</td><td>1.698</td><td>1.728</td><td>1.753</td><td>1.768</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 1.519820 1.519823 1.519826 1.519829 1.519830 ,  <font color="MidnightBlue">highest</font>: 1.853207 1.853218 1.853229 1.853239 1.853250</span> <hr class="thinhr"> <span style="font-weight:bold">Flotation Column 01 Air Flow</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAWElEQVQ4jWNgpCFgYCBfKxMNAQP5po+6i0StVHQGpuHD0F20zGsDkR+JCYuBiMdRd5GokbBOBhAg13gy9dHcXaC0D8o4YIRg4eUwgm3EI4lQg1MSHwfoJgBZnAzdAAlaOAAAAABJRU5ErkJggg==" alt="image" /></div> <style>
-.hmisctable535185 {
+.hmisctable341687 {
 border: none;
 font-size: 74%;
 }
-.hmisctable535185 td {
+.hmisctable341687 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable535185 th {
+.hmisctable341687 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable535185">
+ <table class="hmisctable341687">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>43675</td><td>1</td><td>280.2</td><td>28.23</td><td>238.7</td><td>249.4</td><td>250.3</td><td>299.3</td><td>300.1</td><td>300.8</td><td>301.4</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 175.5100 175.5580 175.6190 175.6663 175.6980 ,  <font color="MidnightBlue">highest</font>: 372.3876 372.4426 372.6840 373.5490 373.8710</span> <hr class="thinhr"> <span style="font-weight:bold">Flotation Column 02 Air Flow</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAaUlEQVQ4je2VUQrAIAxD33b/Q8+CIA60Lq5soPlRpDUPaZAjTjDRe4YJk9z8Jsnt6i+4Bhw31xNPmONSo4aTtsylRjL6veQ5Edt+yTXgSdHyXL4nlSQum337ySAv1a5xXOQW0CjoWSSmCzdzDB1AXotZAAAAAElFTkSuQmCC" alt="image" /></div> <style>
-.hmisctable287346 {
+.hmisctable143746 {
 border: none;
 font-size: 74%;
 }
-.hmisctable287346 td {
+.hmisctable143746 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable287346 th {
+.hmisctable143746 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable287346">
+ <table class="hmisctable143746">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>80442</td><td>1</td><td>277.2</td><td>31.3</td><td>222.1</td><td>246.7</td><td>250.5</td><td>296.2</td><td>300.7</td><td>303.5</td><td>305.3</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 175.156 175.263 175.590 175.655 175.824 ,  <font color="MidnightBlue">highest</font>: 375.653 375.654 375.776 375.965 375.992</span> <hr class="thinhr"> <span style="font-weight:bold">Flotation Column 03 Air Flow</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAYklEQVQ4jWNgpDVgYCBLFxOtAQNZVtDaXQwMo+4iyXwyHUaJu4ixkGx30Tingd1Fjtlk+AURFsSoGWbxSIYeJDuJUUNndxFn47BzFyjtg3IWAqHy8Egy4JPEUEW0sYwgNwEAln4MqIePajUAAAAASUVORK5CYII=" alt="image" /></div> <style>
-.hmisctable560505 {
+.hmisctable232717 {
 border: none;
 font-size: 74%;
 }
-.hmisctable560505 td {
+.hmisctable232717 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable560505 th {
+.hmisctable232717 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable560505">
+ <table class="hmisctable232717">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>40630</td><td>1</td><td>281.1</td><td>27.44</td><td>246.9</td><td>248.9</td><td>250.9</td><td>298.7</td><td>300.4</td><td>301.9</td><td>302.3</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 176.4690 176.4719 176.4748 176.4778 176.4807 ,  <font color="MidnightBlue">highest</font>: 360.5860 361.0064 362.0642 363.1220 364.3460</span> <hr class="thinhr"> <span style="font-weight:bold">Flotation Column 04 Air Flow</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAVUlEQVQ4je2TWwoAIAgEt+5/6Cz66rVIRlAO+CMLDsIiMAAaOQAiAzxyAPfS4V46eNne6aPFh3/xQmVXztYLLVe9OhsDuVw2SOfKDBivJ2EFy3PilADcpwxd2whSXQAAAABJRU5ErkJggg==" alt="image" /></div> <style>
-.hmisctable672901 {
+.hmisctable606469 {
 border: none;
 font-size: 74%;
 }
-.hmisctable672901 td {
+.hmisctable606469 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable672901 th {
+.hmisctable606469 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable672901">
+ <table class="hmisctable606469">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>196006</td><td>0.999</td><td>299.4</td><td>2.813</td><td>295.1</td><td>295.1</td><td>298.3</td><td>299.8</td><td>300.6</td><td>302.5</td><td>304.4</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 292.1950 292.2180 292.2280 292.2360 292.3620 ,  <font color="MidnightBlue">highest</font>: 305.8587 305.8590 305.8640 305.8680 305.8710</span> <hr class="thinhr"> <span style="font-weight:bold">Flotation Column 05 Air Flow</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAV0lEQVQ4jWNgHDjAwIBHjmngAAMey0fdhcXuUXeRBPC6i37ZDzPPjeZHmIVEGUtPdzEgABFq8chR3TloYKDchdtFBB1IKD8C8wVYJ/EkKod4QKQNQDcBAMlaDESlSJnjAAAAAElFTkSuQmCC" alt="image" /></div> <style>
-.hmisctable772142 {
+.hmisctable840168 {
 border: none;
 font-size: 74%;
 }
-.hmisctable772142 td {
+.hmisctable840168 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable772142 th {
+.hmisctable840168 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable772142">
+ <table class="hmisctable840168">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>194711</td><td>0.999</td><td>299.9</td><td>3.97</td><td>293.5</td><td>295.7</td><td>298.1</td><td>299.9</td><td>301.8</td><td>306.4</td><td>306.4</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 286.2950 286.3690 286.5411 286.7132 286.7470 ,  <font color="MidnightBlue">highest</font>: 310.0660 310.0730 310.1170 310.1230 310.2700</span> <hr class="thinhr"> <span style="font-weight:bold">Flotation Column 06 Air Flow</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAYklEQVQ4je2TQQoAIQwDZ/3/o12xiLeNLfWgm4OCNM2AhCdNEDGXNBHZfRCXmvdzreXFuPJ6truPd/+jw6J4MK2vN7/D8u1hkgOqOLiUMAiDtc7QqtMP4e4SRhij411MeZkq2WQMoihfaUEAAAAASUVORK5CYII=" alt="image" /></div> <style>
-.hmisctable967599 {
+.hmisctable486874 {
 border: none;
 font-size: 74%;
 }
-.hmisctable967599 td {
+.hmisctable486874 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable967599 th {
+.hmisctable486874 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable967599">
+ <table class="hmisctable486874">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>90548</td><td>1</td><td>292.1</td><td>31.44</td><td>248.8</td><td>249.9</td><td>262.5</td><td>299.5</td><td>303.1</td><td>333.6</td><td>349.8</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 189.928 190.146 190.219 190.502 190.536 ,  <font color="MidnightBlue">highest</font>: 370.899 370.903 370.908 370.909 370.910</span> <hr class="thinhr"> <span style="font-weight:bold">Flotation Column 07 Air Flow</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAZklEQVQ4jWNgpBlgYKBEMxPNAAMlZo+6i0TNNLORYXi6i2Y5jQEEyDEdopsszxAZXhSE2EhzFwMUkGM8WD8ZWoixb1C6iwEZEDYMqzgo7YMyGAjBaGSETYABvwo0gNMYuGJ0MaCbAK8MDI7XatlqAAAAAElFTkSuQmCC" alt="image" /></div> <style>
-.hmisctable153747 {
+.hmisctable429032 {
 border: none;
 font-size: 74%;
 }
-.hmisctable153747 td {
+.hmisctable429032 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable153747 th {
+.hmisctable429032 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable153747">
+ <table class="hmisctable429032">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>86819</td><td>1</td><td>290.8</td><td>29.45</td><td>248.5</td><td>249.6</td><td>256.3</td><td>299.0</td><td>301.9</td><td>310.6</td><td>348.9</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 185.9620 185.9810 186.0275 186.0540 186.0741 ,  <font color="MidnightBlue">highest</font>: 371.5730 371.5870 371.5900 371.5920 371.5930</span> <hr class="thinhr"> <span style="font-weight:bold">Flotation Column 01 Level</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAf0lEQVQ4jd2TUQrAIAxDo/c/9GCyWddUMcpgiz+lpM1DKJIiQBqbSciKAF/tlbIWYFx7CVWui+ILXDvJ1rlKZXvWKXMpt3IqqpjvnXusf8Mq5hMyfsOFWzXZ9iQuZ1vhYqohnLWztCGc5epTxazt/GBpLveI4LGmIj//CHADKR3+QwsLU7A8qwAAAABJRU5ErkJggg==" alt="image" /></div> <style>
-.hmisctable473633 {
+.hmisctable348516 {
 border: none;
 font-size: 74%;
 }
-.hmisctable473633 td {
+.hmisctable348516 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable473633 th {
+.hmisctable348516 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable473633">
+ <table class="hmisctable348516">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>299573</td><td>1</td><td>520.2</td><td>140.4</td><td>385.5</td><td>393.9</td><td>417.0</td><td>491.9</td><td>594.1</td><td>759.6</td><td>811.2</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 149.2180 149.2930 149.3220 149.3868 149.4410 ,  <font color="MidnightBlue">highest</font>: 862.2205 862.2290 862.2430 862.2720 862.2740</span> <hr class="thinhr"> <span style="font-weight:bold">Flotation Column 02 Level</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAk0lEQVQ4jbXT2xKAIAgE0M3//+gujoYKKYvxElntnJgBB12AaMXNlkJi67aIlg/S0/kvO9deGJsGYYHp4rF/uiJT3OgaokIu7w7mzSuUvh9fJvfU9z91MNWS2t4a6Wr82xIss4IukK4ZC/rbzni3a8pqJNYU87PPdIdr3WQ59bGo+c/BszdlddBcu9NA6Ulm/mU6AamQCjN8sNjOAAAAAElFTkSuQmCC" alt="image" /></div> <style>
-.hmisctable925688 {
+.hmisctable153950 {
 border: none;
 font-size: 74%;
 }
-.hmisctable925688 td {
+.hmisctable153950 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable925688 th {
+.hmisctable153950 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable925688">
+ <table class="hmisctable153950">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>331189</td><td>1</td><td>522.6</td><td>138.7</td><td>373.3</td><td>397.1</td><td>441.9</td><td>496.0</td><td>595.5</td><td>754.7</td><td>803.5</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 210.752 210.760 210.768 210.770 210.986 ,  <font color="MidnightBlue">highest</font>: 828.847 828.870 828.894 828.903 828.919</span> <hr class="thinhr"> <span style="font-weight:bold">Flotation Column 03 Level</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAiElEQVQ4je2TSw7AIAhEh97/0P2qSKXqkLSbjhswDLxogDACKNvMhIURONvMBM71c825hmwR+ijX0+wQF7Mrh1IsJtB19DpS+3hymTdpPM7b/1i4clRAG1UfcxkIkuuyMMYkhyt1HuSqarIlwuWrpvcgbvQq2VcG+kDQu+hLqlj1gG2a63WyMa1f5gvDj+HlywAAAABJRU5ErkJggg==" alt="image" /></div> <style>
-.hmisctable484410 {
+.hmisctable427484 {
 border: none;
 font-size: 74%;
 }
-.hmisctable484410 td {
+.hmisctable427484 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable484410 th {
+.hmisctable427484 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable484410">
+ <table class="hmisctable427484">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>322315</td><td>1</td><td>531.4</td><td>162.2</td><td>385.0</td><td>394.5</td><td>411.3</td><td>494.3</td><td>601.2</td><td>802.0</td><td>867.7</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 126.2550 126.2560 126.3040 126.3340 126.3520 ,  <font color="MidnightBlue">highest</font>: 886.8166 886.8184 886.8185 886.8202 886.8220</span> <hr class="thinhr"> <span style="font-weight:bold">Flotation Column 04 Level</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAdklEQVQ4jc2TCwrAIAxD093/0Btsw3YfaSJFA6JgYh9CYJoAiMnk+5siXJLCuQlSaHWuE63HqMIrKfzI3QbnbC64y2gUZvBNUVTfRwmL/zLSr1LRYJx9AIsEy7uHmGg816FqoA/Ce+6bGa5h1tbjWCQLW0M4mHaGUgkoBZnHVAAAAABJRU5ErkJggg==" alt="image" /></div> <style>
-.hmisctable164434 {
+.hmisctable891826 {
 border: none;
 font-size: 74%;
 }
-.hmisctable164434 td {
+.hmisctable891826 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable164434 th {
+.hmisctable891826 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable164434">
+ <table class="hmisctable891826">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>309264</td><td>1</td><td>420.3</td><td>102.2</td><td>284.8</td><td>324.8</td><td>356.7</td><td>412.0</td><td>485.5</td><td>529.4</td><td>580.8</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 162.201 162.218 162.226 162.251 162.265 ,  <font color="MidnightBlue">highest</font>: 680.187 680.222 680.274 680.340 680.359</span> <hr class="thinhr"> <span style="font-weight:bold">Flotation Column 05 Level</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAf0lEQVQ4jbWTgQrAIAhEdf//0cO1sZIUvfSQQuzyIUiMiESQM9zhQvRwQc5wB8zVDoZ8TqS4GhAruDqGd8L1wujp1XABqzJpypcy77PWfSRLm+nBs8xbTCxpv1Jq5kYuh8pXLxeMlUXLPD6CCvBJacTYR5Kt4S/cq0RWg/9kvgFckwpTkpeZgAAAAABJRU5ErkJggg==" alt="image" /></div> <style>
-.hmisctable533914 {
+.hmisctable891998 {
 border: none;
 font-size: 74%;
 }
-.hmisctable533914 td {
+.hmisctable891998 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable533914 th {
+.hmisctable891998 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable533914">
+ <table class="hmisctable891998">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>276051</td><td>1</td><td>425.3</td><td>93.48</td><td>324.8</td><td>338.4</td><td>357.7</td><td>408.8</td><td>484.3</td><td>528.7</td><td>590.5</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 166.991 166.999 167.010 167.049 167.114 ,  <font color="MidnightBlue">highest</font>: 675.604 675.607 675.625 675.626 675.644</span> <hr class="thinhr"> <span style="font-weight:bold">Flotation Column 06 Level</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAg0lEQVQ4jcXTWQqAMAwE0Kn3P7Q2CM1it9HaAT9CTPsoBIkKwM2NX3AQQc7Yj8zxMkkNNVymscMFVdrWc7HeBePyxu2u+85g9CXnIlalpFS2FYvl+4habM+/6vQ1X7Ea+cHFsCjYxAxnqvh62AHXe08XisCUlcqrI+uTKt+q6PMV4DKd1o4J2PmufBYAAAAASUVORK5CYII=" alt="image" /></div> <style>
-.hmisctable845658 {
+.hmisctable762574 {
 border: none;
 font-size: 74%;
 }
-.hmisctable845658 td {
+.hmisctable762574 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable845658 th {
+.hmisctable762574 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable845658">
+ <table class="hmisctable762574">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>301502</td><td>1</td><td>429.9</td><td>100.6</td><td>302.7</td><td>331.2</td><td>358.5</td><td>424.7</td><td>492.7</td><td>541.7</td><td>598.2</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 155.841 156.004 156.267 156.451 156.561 ,  <font color="MidnightBlue">highest</font>: 698.805 698.814 698.816 698.853 698.861</span> <hr class="thinhr"> <span style="font-weight:bold">Flotation Column 07 Level</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAd0lEQVQ4jc3TgQrAIAgEUN3/f3Q4FmixzbuKOoIWJj0GijIRC9WZfuFicru41uwLTI+c7RJ/9uU9LnHx56a81RXSFMdc8KBAqdeXzyPG4n8e1sCqcBp0e4iF4fKuCahvWyj8uuZx3p2e/OhsUmxq+lW39dH4rWYqHSYJMaq4Y7QAAAAASUVORK5CYII=" alt="image" /></div> <style>
-.hmisctable334697 {
+.hmisctable191424 {
 border: none;
 font-size: 74%;
 }
-.hmisctable334697 td {
+.hmisctable191424 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable334697 th {
+.hmisctable191424 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable334697">
+ <table class="hmisctable191424">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>295667</td><td>1</td><td>421</td><td>94.94</td><td>305.1</td><td>330.3</td><td>356.8</td><td>411.1</td><td>476.5</td><td>530.4</td><td>579.9</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 175.349 175.377 175.439 175.460 175.483 ,  <font color="MidnightBlue">highest</font>: 659.768 659.772 659.883 659.900 659.902</span> <hr class="thinhr"> <span style="font-weight:bold">% Iron Concentrate</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAgklEQVQ4je2V3Q6AIAiFj7z/Q2cTVErnH7ouOhfIGsK3Uyy4DQLWW9AGYb3rzzXYwgBD9QN9hitgSPSnBZfZ+vmIoPgg5Sf28ekGOwQloiyVtzvg4yRXnMCj0an9XHOiXrZKlf542aFZmKJpDT4p4gtWoxtgCa/KJYtzUu4d85/qnVxhkQojCTqcNAAAAABJRU5ErkJggg==" alt="image" /></div> <style>
-.hmisctable917592 {
+.hmisctable446330 {
 border: none;
 font-size: 74%;
 }
-.hmisctable917592 td {
+.hmisctable446330 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable917592 th {
+.hmisctable446330 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable917592">
+ <table class="hmisctable446330">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>38696</td><td>1</td><td>65.05</td><td>1.257</td><td>62.87</td><td>63.40</td><td>64.37</td><td>65.21</td><td>65.86</td><td>66.37</td><td>66.61</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font> : 62.05000 62.05222 62.05368 62.05444 62.05501 ,  <font color="MidnightBlue">highest</font>: 67.63000 67.66000 67.67000 67.99000 68.01000</span> <hr class="thinhr"> <span style="font-weight:bold">% Silica Concentrate</span><div style="float: right; text-align: right;"><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAACVBMVEUAAADMzMz////1iUV5AAAAh0lEQVQ4jc2UCQ6AIAwEF///aNGK5VggAmpHSCwQHSoVjgCw0fbMYrARAPiuUTzD1r9AzQv2vKBcgQEvMGTYnldu94VXXm89pCRpXa4s1mz/fS/NXrnHhckc9iLf1YpXkjyJn727sXzCq+6qzwm/6Mg+9Qq96TVrNQb3Os6+v872Dy60+8477SkLCT5EB8ZSAAAAAElFTkSuQmCC" alt="image" /></div> <style>
-.hmisctable163040 {
+.hmisctable909499 {
 border: none;
 font-size: 85%;
 }
-.hmisctable163040 td {
+.hmisctable909499 td {
 text-align: center;
 padding: 0 1ex 0 1ex;
 }
-.hmisctable163040 th {
+.hmisctable909499 th {
 color: MidnightBlue;
 text-align: center;
 padding: 0 1ex 0 1ex;
 font-weight: normal;
 }
 </style>
- <table class="hmisctable163040">
+ <table class="hmisctable909499">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>737453</td><td>0</td><td>55569</td><td>1</td><td>2.327</td><td>1.226</td><td>1.08</td><td>1.18</td><td>1.44</td><td>2.00</td><td>3.01</td><td>4.14</td><td>4.73</td></tr>
  </table>

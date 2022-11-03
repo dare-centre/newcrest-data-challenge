@@ -16,7 +16,6 @@ library(knitr)          # To set chunk options.
 # Global knitr options.
 opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 
-script_path_current <- funr::get_script_path()
 ```
 
 DARE 2022
@@ -33,6 +32,7 @@ Everything we need to get started.
 
 ```{r chunk_one}
 
+script_path_current <- funr::get_script_path()
 source(Gmisc::pathJoin(script_path_current, "functions_R", "R_data_functions.R"), local = knitr::knit_global())
 source(Gmisc::pathJoin(script_path_current, "functions_R", "R_helper_functions.R"), local = knitr::knit_global())
 source(Gmisc::pathJoin(script_path_current, "functions_R", "R_plotting_functions.R"), local = knitr::knit_global())
