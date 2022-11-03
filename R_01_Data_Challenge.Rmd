@@ -1,0 +1,185 @@
+
+---
+# Keep YAML above the first chunk.
+title: "<span style='font-size: 34px'>DARE-Newcrest data challenge - flotation plant dataset</span>"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+
+library(dplyr)          # For data manipulation.
+library(ggplot2)        # For plots.
+library(knitr)          # To set chunk options.
+
+# Global knitr options.
+opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+```
+
+DARE 2022
+
+In this R Markdown file, we will provide a template for the DARE-Newcrest data challenge. The main steps covered here will be:
+
+- Load the data
+- Provide an overview of what is in the data
+- Provide an example of a terribly performing baseline model
+- Provide functions to quantify model predictive performance
+
+### Imports and settings
+Everything we need to get started.
+
+```{r chunk_one}
+
+script_path_current <- funr::get_script_path()
+
+# plotting
+source(Gmisc::pathJoin(script_path_current, "functions_R", "R_data_functions.R"), local = knitr::knit_global())
+# helper
+source(Gmisc::pathJoin(script_path_current, "functions_R", "R_helper_functions.R"), local = knitr::knit_global())
+# data
+source(Gmisc::pathJoin(script_path_current, "functions_R", "R_plotting_functions.R"), local = knitr::knit_global())
+
+```
+
+### Load the data
+
+```{r chunk_two}
+
+all_data <- load_hourly_data()
+train_val_x <- all_data$train_x
+train_val_y <- all_data$train_y
+test_x_all <- all_data$test_x
+test_y <- all_data$test_y
+rm(all_data)
+gc()
+
+head(train_val_x)
+
+```
+
+```{r chunk_three}
+
+# lets look at some properties of the data 
+cat("Number of features: ", ncol(train_val_x),
+    "\nNumber of training observations: ", nrow(train_val_x),
+    "\nNumber of test observations: ", nrow(test_x_all),
+    "\nFeature names: ", paste0('"', colnames(test_x_all), '"  '),
+    "\nPredict variable: ", paste0('"', colnames(train_val_y), '"  '),
+    sep = "")
+
+```
+\
+
+### Split our training data into training and validation sets
+
+We can either split this randomly if we are just modelling as a plain regression problem (set `shuffle = True`), or we can split it sequentially if we are modelling as a time series problem (set `shuffle = False`).
+
+```{r chunk_four}
+
+# randomly or sequentially split the data into training and validation sets
+val_split <- FALSE # there is no benefit to using a validation in our simple linear model
+shuffle <- TRUE
+
+if (val_split) {
+  set.seed(1)
+  split1 <- sample(c(rep(0, 0.8 * nrow(train_val_x)),
+                     rep(1, 0.2 * nrow(train_val_x))))
+  
+  train_x_all <- train_val_x[split1 == 0, ]
+  val_x_all <- train_val_x[split1 == 1, ]
+
+  split1 <- sample(c(rep(0, 0.8 * nrow(train_val_y)),
+                     rep(1, 0.2 * nrow(train_val_y))))
+
+  train_y <- train_val_y[split1 == 0, ]
+  val_y <- train_val_y[split1 == 1, ]
+
+} else {
+  train_x_all <- train_val_x
+  train_y <- train_val_y
+  val_x_all <- NULL
+  val_y <- NULL
+}
+
+# create placeholders for our model predictions
+train_y_pred <- NULL
+val_y_pred <- NULL
+test_y_pred <- NULL
+
+```
+
+### Select predictors
+
+We will use the very simplistic approach of just assessing the correlation to the target variable and selecting the most useful features.
+
+```{r chunk_five}
+
+best_n <- 5 # select the top n features - use NULL for all features
+           # N.B. "top_n" is a dpylr function.
+
+if (!is.null(best_n)) {
+    ## YOUR CODE HERE
+    # you can use your own code here to find the optimal features
+
+    # example with simpler correlation approach
+    # select the top n features
+    corr_mtrx <- head(abs(psych::corr.test(x = bind_cols(select(train_x_all, -1), train_y))$r), -1)
+    # print the best n predictors
+    corr_mtrx <- head(corr_mtrx[order(corr_mtrx[, ncol(corr_mtrx)], decreasing = TRUE), ], best_n)
+    corr_mtrx <- corr_mtrx[, colnames(corr_mtrx) %in% "% Silica Concentrate"]
+    for (i in 1:length(corr_mtrx)) {cat(corr_mtrx[i], "  ", names(corr_mtrx)[i], "\n", sep = "")}
+    top_n_features <- names(corr_mtrx)
+    ## END CODE
+
+} else {
+    # use all features
+    top_n_features <- colnames(train_x_all)
+}
+
+# Now
+train_x <- train_x_all[top_n_features]
+train_time <- train_x_all$date
+test_x <- test_x_all[top_n_features]
+test_time <- test_x_all$date
+if (val_split) {
+    val_x <- val_x_all[top_n_features]
+    val_time <- val_x_all$date
+
+} else {
+    val_x <- NULL
+    val_time <- NULL
+}
+
+```
+
+### Scale the data if needed
+
+```{r chunk_six}
+
+use_scaler <- TRUE
+
+if (use_scaler) {
+  # standardise the data for better performance
+#  scaler_x <- StandardScaler()
+#  train_x <- scaler_x.fit_transform(train_x)
+#  test_x <- scaler_x.transform(test_x)
+#  if (val_split) {
+#    val_x <- scaler_x.transform(val_x)
+#  }
+
+#  scaler_y <- StandardScaler()
+#  train_y <- scaler_y.fit_transform(train_y)
+#  test_y <- scaler_y.transform(test_y)
+#  if (val_split) {
+#    val_y <- scaler_y.transform(val_y)
+#  }
+
+} else {
+  scaler_x <- NULL
+  scaler_y <- NULL
+}
+
+```
+\
