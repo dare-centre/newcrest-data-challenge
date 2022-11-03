@@ -11,7 +11,7 @@
 
 
 
-<title>00_Data_Preprocessing.knit</title>
+<title>DARE-Newcrest data challenge - flotation plant dataset</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -348,15 +348,14 @@ display: none;
 
 
 
+<h1 class="title toc-ignore"><span style="font-size: 34px">DARE-Newcrest
+data challenge - flotation plant dataset</span></h1>
 
 </div>
 
 
 <p><br />
-</p>
-<div id="dare-newcrest-data-challenge---flotation-plant-dataset" class="section level1">
-<h1>DARE-Newcrest data challenge - flotation plant dataset</h1>
-<p>DARE 2022</p>
+DARE 2022</p>
 <p>In this R Markdown file, we will provide a template for the
 DARE-Newcrest data challenge. The main steps covered here will be:</p>
 <ul>
@@ -365,13 +364,232 @@ DARE-Newcrest data challenge. The main steps covered here will be:</p>
 <li>Provide an example of a terribly performing baseline model</li>
 <li>Provide functions to quantify model predictive performance</li>
 </ul>
-<div id="imports-and-settings" class="section level2">
-<h2>Imports and settings</h2>
+<div id="imports-and-settings" class="section level3">
+<h3>Imports and settings</h3>
 <p>Everything we need to get started.</p>
-<pre class="chunk_one"><code></code></pre>
-<pre class="chunk_two"><code></code></pre>
-<pre class="chunk_three"><code></code></pre>
+<pre class="r"><code>source(&quot;functions_R/R_data_functions.R&quot;, local = knitr::knit_global())
+source(&quot;functions_R/R_helper_functions.R&quot;, local = knitr::knit_global())
+source(&quot;functions_R/R_plotting_functions.R&quot;, local = knitr::knit_global())</code></pre>
 </div>
+<div id="load-the-data" class="section level3">
+<h3>Load the data</h3>
+<p>Briefly look at the contents and structure of the data.</p>
+<pre class="r"><code>process_data &lt;- load_raw_data()
+kable(head(process_data))</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="3%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="3%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="3%" />
+<col width="3%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">date</th>
+<th align="right">% Iron Feed</th>
+<th align="right">% Silica Feed</th>
+<th align="right">Starch Flow</th>
+<th align="right">Amina Flow</th>
+<th align="right">Ore Pulp Flow</th>
+<th align="right">Ore Pulp pH</th>
+<th align="right">Ore Pulp Density</th>
+<th align="right">Flotation Column 01 Air Flow</th>
+<th align="right">Flotation Column 02 Air Flow</th>
+<th align="right">Flotation Column 03 Air Flow</th>
+<th align="right">Flotation Column 04 Air Flow</th>
+<th align="right">Flotation Column 05 Air Flow</th>
+<th align="right">Flotation Column 06 Air Flow</th>
+<th align="right">Flotation Column 07 Air Flow</th>
+<th align="right">Flotation Column 01 Level</th>
+<th align="right">Flotation Column 02 Level</th>
+<th align="right">Flotation Column 03 Level</th>
+<th align="right">Flotation Column 04 Level</th>
+<th align="right">Flotation Column 05 Level</th>
+<th align="right">Flotation Column 06 Level</th>
+<th align="right">Flotation Column 07 Level</th>
+<th align="right">% Iron Concentrate</th>
+<th align="right">% Silica Concentrate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2017-03-10 01:00:00</td>
+<td align="right">55.2</td>
+<td align="right">16.98</td>
+<td align="right">3019.53</td>
+<td align="right">557.434</td>
+<td align="right">395.713</td>
+<td align="right">10.0664</td>
+<td align="right">1.74</td>
+<td align="right">249.214</td>
+<td align="right">253.235</td>
+<td align="right">250.576</td>
+<td align="right">295.096</td>
+<td align="right">306.4</td>
+<td align="right">250.225</td>
+<td align="right">250.884</td>
+<td align="right">457.396</td>
+<td align="right">432.962</td>
+<td align="right">424.954</td>
+<td align="right">443.558</td>
+<td align="right">502.255</td>
+<td align="right">446.370</td>
+<td align="right">523.344</td>
+<td align="right">66.91</td>
+<td align="right">1.31</td>
+</tr>
+<tr class="even">
+<td align="left">2017-03-10 01:00:00</td>
+<td align="right">55.2</td>
+<td align="right">16.98</td>
+<td align="right">3024.41</td>
+<td align="right">563.965</td>
+<td align="right">397.383</td>
+<td align="right">10.0672</td>
+<td align="right">1.74</td>
+<td align="right">249.719</td>
+<td align="right">250.532</td>
+<td align="right">250.862</td>
+<td align="right">295.096</td>
+<td align="right">306.4</td>
+<td align="right">250.137</td>
+<td align="right">248.994</td>
+<td align="right">451.891</td>
+<td align="right">429.560</td>
+<td align="right">432.939</td>
+<td align="right">448.086</td>
+<td align="right">496.363</td>
+<td align="right">445.922</td>
+<td align="right">498.075</td>
+<td align="right">66.91</td>
+<td align="right">1.31</td>
+</tr>
+<tr class="odd">
+<td align="left">2017-03-10 01:00:00</td>
+<td align="right">55.2</td>
+<td align="right">16.98</td>
+<td align="right">3043.46</td>
+<td align="right">568.054</td>
+<td align="right">399.668</td>
+<td align="right">10.0680</td>
+<td align="right">1.74</td>
+<td align="right">249.741</td>
+<td align="right">247.874</td>
+<td align="right">250.313</td>
+<td align="right">295.096</td>
+<td align="right">306.4</td>
+<td align="right">251.345</td>
+<td align="right">248.071</td>
+<td align="right">451.240</td>
+<td align="right">468.927</td>
+<td align="right">434.610</td>
+<td align="right">449.688</td>
+<td align="right">484.411</td>
+<td align="right">447.826</td>
+<td align="right">458.567</td>
+<td align="right">66.91</td>
+<td align="right">1.31</td>
+</tr>
+<tr class="even">
+<td align="left">2017-03-10 01:00:00</td>
+<td align="right">55.2</td>
+<td align="right">16.98</td>
+<td align="right">3047.36</td>
+<td align="right">568.665</td>
+<td align="right">397.939</td>
+<td align="right">10.0689</td>
+<td align="right">1.74</td>
+<td align="right">249.917</td>
+<td align="right">254.487</td>
+<td align="right">250.049</td>
+<td align="right">295.096</td>
+<td align="right">306.4</td>
+<td align="right">250.422</td>
+<td align="right">251.147</td>
+<td align="right">452.441</td>
+<td align="right">458.165</td>
+<td align="right">442.865</td>
+<td align="right">446.210</td>
+<td align="right">471.411</td>
+<td align="right">437.690</td>
+<td align="right">427.669</td>
+<td align="right">66.91</td>
+<td align="right">1.31</td>
+</tr>
+<tr class="odd">
+<td align="left">2017-03-10 01:00:00</td>
+<td align="right">55.2</td>
+<td align="right">16.98</td>
+<td align="right">3033.69</td>
+<td align="right">558.167</td>
+<td align="right">400.254</td>
+<td align="right">10.0697</td>
+<td align="right">1.74</td>
+<td align="right">250.203</td>
+<td align="right">252.136</td>
+<td align="right">249.895</td>
+<td align="right">295.096</td>
+<td align="right">306.4</td>
+<td align="right">249.983</td>
+<td align="right">248.928</td>
+<td align="right">452.441</td>
+<td align="right">452.900</td>
+<td align="right">450.523</td>
+<td align="right">453.670</td>
+<td align="right">462.598</td>
+<td align="right">443.682</td>
+<td align="right">425.679</td>
+<td align="right">66.91</td>
+<td align="right">1.31</td>
+</tr>
+<tr class="even">
+<td align="left">2017-03-10 01:00:00</td>
+<td align="right">55.2</td>
+<td align="right">16.98</td>
+<td align="right">3079.10</td>
+<td align="right">564.697</td>
+<td align="right">396.533</td>
+<td align="right">10.0705</td>
+<td align="right">1.74</td>
+<td align="right">250.730</td>
+<td align="right">248.906</td>
+<td align="right">249.521</td>
+<td align="right">295.096</td>
+<td align="right">306.4</td>
+<td align="right">250.356</td>
+<td align="right">251.873</td>
+<td align="right">444.384</td>
+<td align="right">443.269</td>
+<td align="right">460.449</td>
+<td align="right">439.920</td>
+<td align="right">451.588</td>
+<td align="right">433.539</td>
+<td align="right">425.458</td>
+<td align="right">66.91</td>
+<td align="right">1.31</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
