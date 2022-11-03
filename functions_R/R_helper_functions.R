@@ -24,7 +24,7 @@ calculate_model_performance <- function(y_obs, y_mod) {
 ###############################################################################
 ###############################################################################
 
-assess_model_prediction <- function(predictor) {
+assess_model_prediction <- function(predictor, test = FALSE) {
 
   # Plot the model performance for training, validation and test data.
   # Return the metrics for model performance.
@@ -36,6 +36,7 @@ assess_model_prediction <- function(predictor) {
   #        - val_y_pred    predicted values for validation data
   #        - test_y        observed values for test data
   #        - test_y_pred   predicted values for test data
+  #   - test: False - set to True to get test set results
   # Output:
   #    - metrics: A dataframe with,
   #        - R2
