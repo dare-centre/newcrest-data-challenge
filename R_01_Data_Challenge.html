@@ -1656,8 +1656,8 @@ test_y &lt;- all_data$test_y
 rm(all_data)
 gc()</code></pre>
 <pre><code>##           used  (Mb) gc trigger  (Mb) max used  (Mb)
-## Ncells 2390213 127.7    4569310 244.1  4569310 244.1
-## Vcells 4044513  30.9    8388608  64.0  6806142  52.0</code></pre>
+## Ncells 2390347 127.7    4570227 244.1  4570227 244.1
+## Vcells 4045120  30.9    8388608  64.0  6837434  52.2</code></pre>
 <pre class="r"><code>head(train_val_x)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -1766,25 +1766,75 @@ if (val_split) {
 
 if (use_scaler) {
   # standardise the data for better performance
-#  scaler_x &lt;- StandardScaler()
-#  train_x &lt;- scaler_x.fit_transform(train_x)
-#  test_x &lt;- scaler_x.transform(test_x)
-#  if (val_split) {
-#    val_x &lt;- scaler_x.transform(val_x)
-#  }
+  train_x &lt;- scale(train_x)
+  test_x &lt;- scale(test_x, center = attr(train_x, &quot;scaled:center&quot;), scale = attr(train_x, &quot;scaled:scale&quot;))
+  if (val_split) {
+    val_x &lt;- scale(val_x, center = attr(train_x, &quot;scaled:center&quot;), scale = attr(train_x, &quot;scaled:scale&quot;))
+  }
 
-#  scaler_y &lt;- StandardScaler()
-#  train_y &lt;- scaler_y.fit_transform(train_y)
-#  test_y &lt;- scaler_y.transform(test_y)
-#  if (val_split) {
-#    val_y &lt;- scaler_y.transform(val_y)
-#  }
+  train_y &lt;- scale(train_y)
+  test_y &lt;- scale(test_y, center = attr(train_y, &quot;scaled:center&quot;), scale = attr(train_y, &quot;scaled:scale&quot;))
+  if (val_split) {
+    val_y &lt;- scale(val_y, center = attr(train_y, &quot;scaled:center&quot;), scale = attr(train_y, &quot;scaled:scale&quot;))
+  }
 
 } else {
   scaler_x &lt;- NULL
   scaler_y &lt;- NULL
 }</code></pre>
-<pre><code>## NULL</code></pre>
+</div>
+<div id="train-a-model" class="section level3">
+<h3>Train a model</h3>
+<p>We will use a simple linear regression model as a baseline. You can
+implement your own model here.</p>
+<pre class="r"><code>#import sklearn.linear_model as lm
+#from sklearn.neural_network import MLPRegressor
+
+## YOUR CODE HERE
+
+## fit a linear model to the data
+#model &lt;- lm.LinearRegression()
+#model.fit(train_x, train_y)
+
+## fit a neural network to the data
+## model &lt;- MLPRegressor(
+##   hidden_layer_sizes = (100, 20), max_iter = 1000,
+##   activation = &quot;relu&quot;, solver = &quot;adam&quot;,
+## )
+## model.fit(train_x, train_y.squeeze())
+
+## predict on data
+#train_y_pred &lt;- model.predict(train_x)
+#test_y_pred &lt;- model.predict(test_x)
+#if (!is.null(val_x)) {
+#  val_y_pred &lt;- model.predict(val_x)
+#}
+
+## END CODE</code></pre>
+</div>
+<div id="assess-model-performance" class="section level3">
+<h3>Assess model performance</h3>
+<pre class="r"><code>## construct the dict of data for plotting and metrics
+#data_dict &lt;- {
+#  &quot;train_time&quot;: train_time,
+#  &quot;train_y&quot;: train_y,
+#  &quot;train_y_pred&quot;: train_y_pred,
+#  &quot;test_time&quot;: test_time,
+#  &quot;test_y&quot;: test_y,
+#  &quot;test_y_pred&quot;: test_y_pred,
+#  &quot;val_time&quot;: val_time,
+#  &quot;val_y&quot;: val_y,
+#  &quot;val_y_pred&quot;: val_y_pred,
+#}
+#predicted_data  = inversescaler_pred_dict(data_dict, scaler = scaler_y)
+
+#data_dict[&quot;train_y_pred&quot;]
+#data_dict[&quot;train_y_pred&quot;].reshape(-1, 1)</code></pre>
+<pre class="r"><code>## plot the model performance and get metrics
+#metrics &lt;- assess_model_prediction(predicted_data)
+cat(&quot;Model performance metrics:&quot;)</code></pre>
+<pre><code>## Model performance metrics:</code></pre>
+<pre class="r"><code>#metrics</code></pre>
 <p><br />
 </p>
 </div>
