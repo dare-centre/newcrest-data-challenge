@@ -235,9 +235,9 @@ head(data_list$train_y_pred)
 ```{r chunk_nine}
 
 ## plot the model performance and get metrics
-#metrics <- assess_model_prediction(predicted_data)
+metrics <- assess_model_prediction(predicted_data, test = FALSE)
 cat("Model performance metrics:")
-#metrics
+metrics
 
 ```
 
