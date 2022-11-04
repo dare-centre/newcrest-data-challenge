@@ -108,7 +108,7 @@ def inversescaler_pred_dict(predicted_data, scaler=None):
         predicted_data['test_y'] = scaler.inverse_transform(predicted_data['test_y'])
         predicted_data['test_y_pred'] = scaler.inverse_transform(predicted_data['test_y_pred'].reshape(-1,1))
         if not predicted_data['val_y'] is None:
-            predicted_data['val_y'] = scaler_y.inverse_transform(predicted_data['val_y'])
-            predicted_data['val_y_pred'] = scaler_y.inverse_transform(predicted_data['val_y_pred'].reshape(-1,1))
+            predicted_data['val_y'] = scaler.inverse_transform(predicted_data['val_y'])
+            predicted_data['val_y_pred'] = scaler.inverse_transform(predicted_data['val_y_pred'].reshape(-1,1))
 
     return predicted_data
