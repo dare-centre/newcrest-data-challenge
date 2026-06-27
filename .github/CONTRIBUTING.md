@@ -1,8 +1,8 @@
 # Contributing
 
 The repository holds digital assets for a data challenge with fixed aims.
-Contributions enhancing repository quality are welcome. Software functionality
-changes however, are inappropriate.
+Contributions enhancing repository quality are welcome. Software feature
+changes, however, are inappropriate.
 
 Contributors should follow a standard [fork and pull request workflow](https://www.google.com/search?q=GitHub+fork+and+pull+request+workflow).
 
